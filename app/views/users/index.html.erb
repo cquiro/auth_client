@@ -1,0 +1,16 @@
+<h1>Users List</h1>
+
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user["email"], edit_user_path(user["id"]) %>
+      Joined <%= time_ago_in_words(user["created_at"]) %> ago.
+      Last updated <%= time_ago_in_words(user["updated_at"]) %> ago.
+      <%= link_to " Delete", user_path(user["id"]), method: :delete, data: { confirm: "If you continue, this user will be deleted from the platform." } %>
+    </li>
+  <% end %>
+</ul>
+
+<p>
+  <%= link_to "Add user", new_user_path %>
+</p>

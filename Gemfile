@@ -14,6 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'httparty', '~> 0.16.2'
 
 group :development, :test do
   gem 'pry-rails'
@@ -35,6 +36,8 @@ group :test do
   gem 'capybara', '~> 2.18.0'
   gem "database_cleaner"
 end
+
+gem 'rails_12factor', group: :production
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

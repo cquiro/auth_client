@@ -1,0 +1,16 @@
+<h1><%= @user.email %></h1>
+<img src="data:image/png;base64, <%= @user.image %>"/>
+<div>
+  <%= form_for :user, url: { action: "update" },  html: { method: "patch" } do |form| %>
+    <p>
+      <%= form.label :image, 'Change Image' %>
+      <%= form.file_field :image %>
+    </p>
+
+    <p>
+      <%= form.submit "Update" %>
+      <%= link_to "Users List", root_path %>
+    </p>
+  <% end %>
+</div>
+

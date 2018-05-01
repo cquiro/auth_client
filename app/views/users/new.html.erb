@@ -1,0 +1,19 @@
+<h1>New User</h1>
+
+<div>
+  <%= form_for :user, url: { action: "create" } do |form| %>
+    <p>
+        <%= form.label :email %>
+        <%= form.email_field :email, placeholder: "Enter the user's email", required: true %>
+    </p>
+    <p>
+      <%= form.label :image %>
+      <%= form.file_field :image, required: true %>
+    </p>
+
+    <p>
+      <%= form.submit "Add User" %>
+      <%= link_to "Users List", root_path %>
+    </p>
+  <% end %>
+</div>
