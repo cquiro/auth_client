@@ -1,0 +1,20 @@
+<h1>Verify User</h1>
+
+<div>
+  <%= form_tag verify_user_path, multipart: true do %>
+    <p>
+      <%= label_tag :email %>
+      <%= email_field_tag :email, params[:email], required: true %>
+    </p>
+
+    <p>
+      <%= label_tag :image %>
+      <%= file_field_tag :image, required: true %>
+    </p>
+
+    <p>
+      <%= submit_tag "Verify User" %>
+      <%= link_to "Users List", root_path %>
+    </p>
+  <% end %>
+</div>

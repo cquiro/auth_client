@@ -1,5 +1,6 @@
 class User
   include HTTParty
+  # base_uri 'https://floating-river-22339.herokuapp.com'
   base_uri 'http://localhost:3001'
 
   attr_accessor :image
@@ -33,5 +34,9 @@ class User
 
   def destroy_user
     self.class.delete("/users/".concat(id))
+  end
+
+  def verify_user(params)
+    self.class.post("/verify_user/".concat(params[:email]), body: { image: params[:image] })
   end
 end
