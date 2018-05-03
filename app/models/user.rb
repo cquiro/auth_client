@@ -1,7 +1,6 @@
 class User
   include HTTParty
-  # base_uri 'https://floating-river-22339.herokuapp.com'
-  base_uri 'http://localhost:3001'
+  base_uri 'https://floating-river-22339.herokuapp.com'
 
   attr_accessor :image
   attr_reader :email, :id
@@ -16,7 +15,7 @@ class User
 
   def list_users
     self.class.get("/users").map do |user|
-      user.slice("id", "email", "created_at", "updated_at") 
+      user.slice("id", "email", "created_at", "updated_at", "image") 
     end
   end
 

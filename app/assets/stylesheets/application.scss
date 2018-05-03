@@ -1,0 +1,39 @@
+@import 'bootstrap';
+
+#main-container {
+  padding-top: 60px;
+}
+
+.users-link {
+  margin-top: 30px;
+}
+
+#add-link {
+  margin: 30px 0 30px 0;
+}
+
+#image-field {
+  margin-top: 24px;
+}
+
+#verify-link {
+  margin: 30px 0 30px 0;
+}
+
+.success {
+  color: green;
+  padding-bottom: 15px;
+  font-size: 1.3em;
+}
+
+.error {
+  color: red;
+  padding-bottom: 15px;
+  font-size: 1.3em;
+}
+
+.notice {
+  color: #007bff;
+  padding-bottom: 15px;
+  font-size: 1.3em;
+}

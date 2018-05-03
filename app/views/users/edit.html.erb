@@ -1,16 +1,23 @@
-<h1><%= @user.email %></h1>
-<img src="data:image/png;base64, <%= @user.image %>"/>
-<div>
-  <%= form_for :user, url: { action: "update" },  html: { method: "patch" } do |form| %>
-    <p>
-      <%= form.label :image, 'Change Image' %>
-      <%= form.file_field :image %>
-    </p>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-header">
+        <h4>Update user: <i><%= @user.email %></i></h4>
+      </div>
+      <div class="card-body">
+        <img src="data:image/png;base64, <%= @user.image %>"/>
+        <%= form_for :user, url: { action: "update" },  html: { method: "patch" } do |form| %>
+          <div class="form-group" id="image-field">
+            <%= form.label :image, 'Change Image (png)' %>
+            <%= form.file_field :image %>
+          </div>
 
-    <p>
-      <%= form.submit "Update" %>
-      <%= link_to "Users List", root_path %>
-    </p>
-  <% end %>
+          <div>
+            <%= form.submit "Update User", class: "btn btn-default btn-primary float-right" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <p class="text-center users-link"><%= link_to "Go to users list", root_path %></p>
+  </div>
 </div>
-

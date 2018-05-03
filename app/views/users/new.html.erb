@@ -1,19 +1,30 @@
-<h1>New User</h1>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-header">
+        <h3>New User</h3>
+      </div>
 
-<div>
-  <%= form_for :user, url: { action: "create" } do |form| %>
-    <p>
-        <%= form.label :email %>
-        <%= form.email_field :email, placeholder: "Enter the user's email", required: true %>
-    </p>
-    <p>
-      <%= form.label :image %>
-      <%= form.file_field :image, required: true %>
-    </p>
+      <div class="card-body">
+        <%= form_for :user, url: { action: 'create' } do |form| %>
+          <div class='form-group'>
+            <%= form.label :email %>
+            <%= form.email_field :email, placeholder: 'Enter the user\'s email', required: true, class: 'form-control' %>
+          </div>
 
-    <p>
-      <%= form.submit "Add User" %>
-      <%= link_to "Users List", root_path %>
-    </p>
-  <% end %>
+          <div class="form-group">
+            <div>
+              <%= form.label :image, 'Image (png)' %>
+            </div>
+            <%= form.file_field :image, required: true %>
+          </div>
+
+          <div>
+            <%= form.submit "Add User", class: "btn btn-default btn-primary float-right" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <p class="text-center users-link"><%= link_to "Go to users list", root_path %></p>
+  </div>
 </div>

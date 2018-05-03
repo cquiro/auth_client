@@ -1,20 +1,29 @@
-<h1>Verify User</h1>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-header">
+        <h4>Verify User</h4>
+      </div>
+      <div class="card-body">
+        <%= form_tag verify_user_path, multipart: true do %>
+          <div class='form-group'>
+            <%= label_tag :email %>
+            <%= email_field_tag :email, params[:email], placeholder: 'Enter the user\'s email', required: true, class: 'form-control' %>
+          </div>
 
-<div>
-  <%= form_tag verify_user_path, multipart: true do %>
-    <p>
-      <%= label_tag :email %>
-      <%= email_field_tag :email, params[:email], required: true %>
-    </p>
+          <div class='form-group'>
+            <div>
+              <%= label_tag :image, 'Image (png)' %>
+            </div>
+            <%= file_field_tag :image, required: true %>
+          </div>
 
-    <p>
-      <%= label_tag :image %>
-      <%= file_field_tag :image, required: true %>
-    </p>
-
-    <p>
-      <%= submit_tag "Verify User" %>
-      <%= link_to "Users List", root_path %>
-    </p>
-  <% end %>
+          <div>
+            <%= submit_tag "Verify User", class: "btn btn-default btn-primary float-right" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <p class="text-center users-link"><%= link_to "Go to users list", root_path %></p>
+  </div>
 </div>
