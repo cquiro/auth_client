@@ -7,3 +7,5 @@ General info:
 * Ruby version: 2.5.0
 * Raisl version: 5.1.6
 * Test suite: RSpec and Capybara.
+
+Check it out at: https://mighty-escarpment-50874.herokuapp.com
