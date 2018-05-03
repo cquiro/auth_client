@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a rails app that acts as a client that consumes https://github.com/cquiro/auth_api supporting CRUD orperations on users. It also allows to verify a user by sending a png image.
 
-Things you may want to cover:
+General info:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version: 2.5.0
+* Raisl version: 5.1.6
+* Test suite: RSpec and Capybara.
