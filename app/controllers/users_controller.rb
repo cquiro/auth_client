@@ -1,15 +1,17 @@
 class UsersController < ApplicationController
   def index
-    @users = User.new.list_users
+    @users = user_api.list
   end
 
   def new
-    @user = User.new()
+    @user = user_api
   end
 
   def create
-    response = User.new().create_user({ email: create_params[:email],
-                                        image: base64_image(create_params[:image]) }) 
+    response = user_api.create({
+      email: create_params[:email],
+      image: ImageService.new(create_params[:image]).to_base64
+    }) 
 
     if response.code == 201
       redirect_to root_path, { notice: "The user has been created." }
@@ -19,11 +21,13 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.new(params[:id])
+    @user = user_api(id: params[:id])
   end
 
   def update
-    response = User.new(params[:id]).update_user({ image: base64_image(update_params[:image]) }) 
+    response = user_api(id: params[:id]).update({
+      image: ImageService.new(update_params[:image]).to_base64
+    }) 
 
     if response.code == 200
       redirect_to root_path, { notice: "The image has been updated." }
@@ -33,7 +37,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    response = User.new(params[:id]).destroy_user
+    response = user_api(id: params[:id]).destroy
+
     if response.code == 204
       redirect_to root_path, { notice: "The user has been deleted." }
     else
@@ -43,8 +48,8 @@ class UsersController < ApplicationController
 
   private
 
-  def user_api
-    @user_api ||= User.new
+  def user_api(id: nil)
+    User.new(user_id: id)
   end
 
   def update_params
@@ -53,9 +58,5 @@ class UsersController < ApplicationController
 
   def create_params
     params.require(:user).permit(:email, :image)
-  end
-
-  def base64_image(uploaded_image)
-    Base64.strict_encode64(File.read(uploaded_image.tempfile))
   end
 end

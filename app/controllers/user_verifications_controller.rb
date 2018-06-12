@@ -3,8 +3,11 @@ class UserVerificationsController < ApplicationController
   end
 
   def create
-    response = User.new().verify_user({ email: params[:email],
-                                        image: base64_image(params[:image]) }) 
+    response = User.new.verify({
+      email: params[:email], 
+      image: ImageService.new(params[:image]).to_base64,
+      user_agent: request.user_agent
+    }) 
 
     if response.code == 200
       flash.now[:success] = 'User verified.'
@@ -13,11 +16,5 @@ class UserVerificationsController < ApplicationController
       flash.now[:error] = 'Unauthorized user.'
       render :new, status: :unauthorized
     end
-  end
-
-  private
-
-  def base64_image(uploaded_image)
-    Base64.strict_encode64(File.read(uploaded_image.tempfile))
   end
 end
